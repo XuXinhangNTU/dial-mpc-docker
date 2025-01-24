@@ -34,7 +34,7 @@ docker run -it -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY --gpus a
 ```
 ### Second Time Run
 ```bash
-docker start <Your Name> 
+docker start <Your Name> && docker exec -it <Your Name> bash
 ```
 ## Tips
 The vscode plugin "Dev Containers" is very easy to use when you do docker development.
