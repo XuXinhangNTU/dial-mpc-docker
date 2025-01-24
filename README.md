@@ -6,7 +6,7 @@ You can find the DIAL-MPC in [here](https://github.com/LeCAR-Lab/dial-mpc).
 
 ## Requirenments
 > [!CAUTION]
-> You need a Linux or Ubuntu system with Nvidia-driver (>=525.60.13)
+> You need a Linux or Ubuntu system with Nvidia-driver (>=525.60.13) to support CUDA 12.*
 
 ## Docker and Nvidia-toolkit installation
 ### Step 1. Docker install
@@ -15,9 +15,9 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sudo bash get-docker.sh
 ``` 
 ### Step 2. Docker Postinstall(Follow [here](https://docs.docker.com/engine/install/linux-postinstall/))
-### Step 3. Docker Nvidia Toolkit
+### Step 3. Docker Nvidia Toolkit(Follow [here](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html))
 
-### Step 4(Optional).Install xhost
+### Step 4. (Optional) Install xhost
 ``` bash
 sudo apt install x11-xserver-utils
 ```
@@ -26,5 +26,16 @@ sudo apt install x11-xserver-utils
 git clone https://github.com/XuXinhangNTU/dial-mpc-docker
 cd dial-mpc-docker
 docker build -t dial-mpc .
-docker run -it -v 
 ```
+### First Time Run (Create the container)
+```bash
+xhost +
+docker run -it -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY --gpus all --name <Your Name> dial-mpc
+```
+### Second Time Run
+```bash
+docker start <Your Name> 
+```
+## Tips
+The vscode plugin "Dev Containers" is very easy to use when you do docker development.
+
