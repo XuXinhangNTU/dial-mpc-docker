@@ -40,3 +40,6 @@ docker start <Your Name> && docker exec -it <Your Name> bash
 ## Tips
 The vscode plugin "Dev Containers" is very easy to use when you do docker development.
 
+## Notice
+> [!CAUTION]
+> If the demo looks odd, check your GPU usage! RTX 3090 is tested.
